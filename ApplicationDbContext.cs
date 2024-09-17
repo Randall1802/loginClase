@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using loginClase.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace loginClase
@@ -19,6 +20,9 @@ namespace loginClase
 
 		//Van los modelos que se convertiran en tablas. Modelo va en singular, pero a bd sera en plural.
 		//ej: Cliente, se manda como Clientes.
+		//esto es pa q entity framework pueda mapear el modelo y mandarlo a la bd
+		public DbSet<Departamento> Departamentos { get; set; }
+
 
 	}
 }
