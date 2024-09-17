@@ -12,8 +12,8 @@ using loginClase;
 namespace loginClase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240912162710_Departamento")]
-    partial class Departamento
+    [Migration("20240917200800_Uno")]
+    partial class Uno
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
