@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,14 @@ var builder = WebApplication.CreateBuilder(args);
 //configurar seguridad identity (microsoft)
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-//configurar la conexion a la bd
+//conxión a la bd de postgres, el defaultConnection se crea en appsettings
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//configurar la conexion a la bd de sql server
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//para funcionalidades de automapper (17-09-2024)
+//builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 //copiar y pegar abajo el code de whatsapp e investigar pa q sirve cada cosa
 //Configurar JWT
